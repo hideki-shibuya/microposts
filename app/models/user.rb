@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
                       uniqueness: { case_sensitive: false }
     has_secure_password
     validates :password, presence: true, length: {minimum: 6 }, allow_nil: true
-    has_many :microposts
+    has_many :microposts, dependent: :destroy
     
     has_many :following_relationships, class_name: "Relationship",
                                        foreign_key: "follower_id",
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
                                       dependent: :destroy
     has_many :follower_users, through: :follower_relationships, source: :follower
     
-    # 他の他のユーザーをフォローする
+    # 他のユーザーをフォローする
     def follow(other_user)
         following_relationships.find_or_create_by(followed_id: other_user.id)
     end
