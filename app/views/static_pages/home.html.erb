@@ -14,6 +14,7 @@
         <div class="col-md-8">
             <h3>Micropost Feed</h3>
             <%= render 'shared/feed' %>
+            <%= will_paginate @feed_items %>
         </div>
     </div>
 <% else %>
