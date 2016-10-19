@@ -5,9 +5,14 @@
                 <%= gravatar_for @user %>
                 <%= @user.name %>
             </h1>
+            age:<%= @user.age %>
         </section>
         <section class="stats">
             <%= render 'shared/stats' %>
+        </section>
+        <section class="well">
+            <span class="label label-default">Profile</span></br>
+            <%= @user.profile %>
         </section>
     </aside>
     <div class="col-md-8">
